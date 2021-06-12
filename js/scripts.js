@@ -6,7 +6,7 @@ const init = () => {
   const map = new ol.Map({
     view: new ol.View({
       center: getCoord(change(googleCoord)),
-      zoom: 5,
+      zoom: 4,
     }),
     layers: [
       new ol.layer.Tile({
@@ -16,9 +16,9 @@ const init = () => {
     target: 'map',
   })
 
-  // Data
+  // Pins and styles
   const cityStyle = (city) => {
-    console.log(city.values_.id.toString());
+    // console.log(city);
     const styles = [
       new ol.style.Style({
         image: new ol.style.Circle({
@@ -52,6 +52,37 @@ const init = () => {
   });
 
   map.addLayer(pinsLayer);
+
+
+  // Pin Click
+  const nav = document.querySelector('.nav');
+  const city = {
+    text: document.querySelector('.cityname'),
+    img: document.querySelector('.cityimage'),
+  };
+  const mapView = map.getView();
+
+  const itemClickHandler = (feature, el) => {
+    console.log(feature.values_.geometry.flatCoordinates);
+
+    // change active nav element
+    nav.querySelector('.active').classList.remove('active');
+    el.classList.add('active');
+
+    // change the view
+    mapView.animate(
+      {center: feature.values_.geometry.flatCoordinates},
+      {zoom: 5},
+    );
+  };
+
+  map.addEventListener('click', (e) => {
+    map.forEachFeatureAtPixel(e.pixel, (feature, layer) => {
+      // console.log(feature.values_.city);
+      const navEl = nav.children.namedItem(feature.values_.city);
+      itemClickHandler(feature, navEl);
+    });
+  });
 };
 
 window.onload = init;
