@@ -17,29 +17,31 @@ const init = () => {
   })
 
   // Pins and styles
-  const cityStyle = (city) => {
-    // console.log(city);
-    const styles = [
-      new ol.style.Style({
-        image: new ol.style.Circle({
-          fill: new ol.style.Fill({color: [0, 255, 0, 0.3]}),
-          stroke: new ol.style.Stroke({ // border
-            color: [0, 255, 0, 0.9],
-            width: 2,
-          }),
-          radius: 10,
+  const createPin = (text, color, bgColor, borderColor) => (
+    new ol.style.Style({
+      image: new ol.style.Circle({
+        fill: new ol.style.Fill({color: bgColor}),
+        stroke: new ol.style.Stroke({
+          color: borderColor,
+          width: 2,
         }),
-        text: new ol.style.Text({
-          text: city.values_.id.toString(),
-          scale: 1.5,
-          fill: new ol.style.Fill({color: 'red'}),
-          // stroke: new ol.style.Stroke({
-          //   color: 'red',
-          //   width: 1,
-          // }),
-        })
+        radius: 10,
+      }),
+      text: new ol.style.Text({
+        text,
+        scale: 1.5,
+        fill: new ol.style.Fill({color}),
       })
-    ];
+    })
+  );
+
+  const cityStyle = (f) => {
+    styles = createPin(f.values_.id.toString(), 'red', [0, 255, 0, 0.3], [0, 255, 0, 0.9]);
+    return styles;
+  }
+
+  const activeStyle = (f) => {
+    styles = createPin(f.values_.id.toString(), 'blue', [0, 255, 0, 0.3], 'red');
     return styles;
   }
 
@@ -57,8 +59,8 @@ const init = () => {
   // Pin Click
   const nav = document.querySelector('.nav');
   const city = {
-    text: document.querySelector('.cityname'),
-    img: document.querySelector('.cityimage'),
+    text: document.querySelector('#cityname'),
+    img: document.querySelector('#cityimage'),
   };
   const mapView = map.getView();
 
@@ -74,8 +76,20 @@ const init = () => {
       {center: feature.values_.geometry.flatCoordinates},
       {zoom: 5},
     );
+
+    // change features styles
+    const allFeat = pinsLayer.getSource().getFeatures();
+    allFeat.forEach(f => {
+      f.setStyle(cityStyle(f));
+    });
+    feature.setStyle(activeStyle(feature));
+
+    // change legend
+    city.text.innerHTML = `Active city is: ${feature.values_.city}`;
+    city.img.src = `./img/${feature.values_.city}.jpg`
   };
 
+  // pin clicks
   map.addEventListener('click', (e) => {
     map.forEachFeatureAtPixel(e.pixel, (feature, layer) => {
       // console.log(feature.values_.city);
@@ -83,6 +97,8 @@ const init = () => {
       itemClickHandler(feature, navEl);
     });
   });
+
+  // nav clicks
 };
 
 window.onload = init;
