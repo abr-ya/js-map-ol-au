@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Openlaers Map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-1">
+        <div class="column-navigation">
+          <a title='Home' id='Home' class='active'><i class="fas fa-home" id='Home'></i></a>
+          <a title='Adelaide' id='Adelaide'><i class="far fa-circle" id='Adelaide'></i></a>
+          <a title='Brisbane' id='Brisbane'><i class="far fa-circle" id='Brisbane'></i></a>
+          <a title='Darwin' id='Darwin'><i class="far fa-circle" id='Darwin'></i></a>
+          <a title='Hobart' id='Hobart'><i class="far fa-circle" id='Hobart'></i></a>
+          <a title='Melbourne' id='Melbourne'><i class="far fa-circle" id='Melbourne'></i></a>
+          <a title='Perth' id='Perth'><i class="far fa-circle" id='Perth'></i></a>
+          <a title='Sydney' id='Sydney'><i class="far fa-circle" id='Sydney'></i></a>
+        </div>
+      </div>
+  
+      <div class="grid-2">
+        <div id="map" class="column-map"></div>
+      </div>
+  
+      <div class="grid-3">
+        <div class="column-menu" id='menu-information'>
+          <p id='cityname'>Australian Capital Cities</p>
+          <img id='cityimage' src="./img/flag.jpg" alt="Australian_Flag">
+        </div>
+      </div>
+    </div>
+   
+    <script src="https://kit.fontawesome.com/7bc7ace5f0.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

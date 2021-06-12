@@ -1,0 +1,103 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "city": "Hobart"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.392578125,
+          -42.82763863624229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "city": "Melbourne"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.95361328125,
+          -37.75334401310657
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "city": "Brisbane"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.10546875,
+          -27.41078570257701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "city": "Darwin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.78125,
+          -12.425847783029134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "city": "Adelaide"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.6474609375,
+          -34.849875031954156
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "city": "Perth"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.8837890625,
+          -31.97080393043308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "city": "Sydney"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.23779296875,
+          -33.8339199536547
+        ]
+      }
+    }
+  ]
+}
