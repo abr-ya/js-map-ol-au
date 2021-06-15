@@ -49,7 +49,7 @@ const init = () => {
   const pinsLayer = new ol.layer.Vector({
     source: new ol.source.Vector({
       format: new ol.format.GeoJSON(),
-      url: '../data.json',
+      url: 'https://abr-ya.github.io/js-map-ol-au/data.json', // ../data.json
     }),
     style: cityStyle,
   });
